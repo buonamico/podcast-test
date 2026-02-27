@@ -21,5 +21,12 @@ jobs:
           git config user.name damian
           git config user.email damisoft@gmail.com
           git add .
-          git commit -m "Modified Feed"
-          git push
+
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          else
+            # proceed with commit or further actions
+            git commit -am "Update feeds"
+            git push
+          fi
